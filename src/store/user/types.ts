@@ -1,6 +1,5 @@
 export interface User {
-  pictureLocation: string | null;
+  picture: string | null;
   userName: string | null;
   isAuthenticated: boolean;
-  hasSeenTutorial: boolean;
 }

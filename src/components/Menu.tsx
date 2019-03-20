@@ -6,20 +6,8 @@ import { RouteComponentProps, withRouter } from 'react-router';
 
 const routes = {
   appPages: [
-    { title: 'Schedule', path: '/', icon: 'calendar' },
-    { title: 'Speakers', path: '/speakers', icon: 'contacts' },
-    { title: 'Map', path: '/map', icon: 'map' },
-    { title: 'About', path: '/about', icon: 'information-circle' }
-  ],
-  loggedInPages: [
-    { title: 'Account', path: '/account', icon: 'person'},
-    { title: 'Support', path: '/support', icon: 'help' },
-    { title: 'Logout', path: '/logout', icon: 'log-out' }
-  ],
-  loggedOutPages: [
-    { title: 'Login', path: '/login', icon: 'log-in' },
-    { title: 'Support', path: '/support', icon: 'help' },
-    { title: 'Signup', path: '/signup', icon: 'person-add' }
+    { title: 'Home', path: '/', icon: 'home' },
+    { title: 'Login', path: '/login', icon: 'login' },
   ]
 }
 
@@ -55,23 +43,6 @@ const Menu: React.SFC<Props> = ({ isAuthenticated, history }) => {
             Navigate
           </IonListHeader>
           { renderlistItems(routes.appPages) }
-        </IonList>
-        <IonList>
-          <IonListHeader>
-            Account
-          </IonListHeader>
-          { isAuthenticated ?
-            renderlistItems(routes.loggedOutPages) :
-            renderlistItems(routes.loggedInPages) }
-        </IonList>
-        <IonList>
-          <IonListHeader>
-            Tutorial
-          </IonListHeader>
-          <IonItem onClick={() => {}}>
-            <IonIcon slot="start" name="hammer"></IonIcon>
-            Show Tutorial
-          </IonItem>
         </IonList>
       </IonContent>
     </IonMenu>

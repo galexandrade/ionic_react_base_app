@@ -1,11 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { PrivateRoute, RequiresTutorialRoute } from './utils/routing';
-import Account from './pages/Account';
-import Login from './pages/Login';
-import Support from './pages/Support';
-import Signup from './pages/Signup';
-import Tutorial from './pages/Tutorial';
+import { PrivateRoute, PublicRoute } from './utils/routing';
+import Home from './pages/home/Home';
+import Login from './pages/public/login/Login';
 import AppStack from './pages/AppStack';
 import Menu from './components/Menu';
 import { IonApp, IonSplitPane, IonPage } from '@ionic/react';
@@ -25,13 +22,8 @@ const App = () => (
             <Menu />
             <IonPage id="main">
               <Switch>
-                <PrivateRoute path='/account' component={Account} />
-                <Route path="/tutorial" component={Tutorial} />
-                <Route path="/logout" />
-                <RequiresTutorialRoute path="/login" component={Login} />
-                <RequiresTutorialRoute path="/support" component={Support} />
-                <RequiresTutorialRoute path="/signup" component={Signup} />
-                <RequiresTutorialRoute path="/" component={AppStack} />
+                <PublicRoute path="/login" component={Login} />
+                <PrivateRoute path="/" component={AppStack} />
               </Switch>
             </IonPage>
           </IonSplitPane>

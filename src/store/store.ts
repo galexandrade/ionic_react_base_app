@@ -1,23 +1,18 @@
 import { createStore, applyMiddleware, compose, Middleware } from 'redux';
-import { fetchLocationsMiddleware } from './locations/middleware';
-import { fetchSessionsMiddleware } from './sessions/middleware';
-import { fetchSpeakersMiddleware } from './speakers/middleware';
+import thunk from 'redux-thunk';
 
 import rootReducer from './root-reducer';
 
 const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const middlewares: Middleware[] = [
-  fetchLocationsMiddleware,
-  fetchSessionsMiddleware,
-  fetchSpeakersMiddleware
-];
-
 function configureStore(initialState?: {}) {
+  console.log('Configuring store');
   return createStore(
     rootReducer,
     initialState,
-    composeEnhancers(applyMiddleware(...middlewares))
+    composeEnhancers(
+      applyMiddleware(thunk)
+    )
   );
 }
 

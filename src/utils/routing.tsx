@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { RouteComponentProps } from 'react-router';
-import Tutorial from '../pages/Tutorial';
 import { connect } from 'react-redux';
 import { RootState } from '../store';
 
@@ -10,7 +9,7 @@ type Props = ReturnType<typeof mapStateToProps> & {
   path?: string | string[];
 }
 
-class PRoute extends Component<Props> {
+class PrivRoute extends Component<Props> {
   render() {
     const Component = this.props.component;
     const routeRender = (props: any) => {
@@ -28,15 +27,10 @@ class PRoute extends Component<Props> {
   }
 }
 
-class RTRoute extends Component<Props> {
+class PubRoute extends Component<Props> {
   render() {
     return (
-      <>
-        { !this.props.user.hasSeenTutorial ? <Tutorial /> : null }
-        <div style={!this.props.user.hasSeenTutorial ? { "display": "none"} : {}}>
-          <Route {...this.props}/>
-        </div>
-      </>
+      <Route {...this.props}/>
     );
   }
 }
@@ -45,5 +39,5 @@ const mapStateToProps = (state: RootState) => ({
   user: state.user
 });
 
-export const PrivateRoute = connect(mapStateToProps)(PRoute);
-export const RequiresTutorialRoute = connect(mapStateToProps)(RTRoute);
+export const PrivateRoute = connect(mapStateToProps)(PrivRoute);
+export const PublicRoute = connect(mapStateToProps)(PubRoute);
