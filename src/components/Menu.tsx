@@ -1,26 +1,22 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { RootState } from '../store';
 import { IonIcon, IonMenu, IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonListHeader, IonItem, IonLabel, IonMenuToggle } from '@ionic/react';
-import { RouteComponentProps, withRouter } from 'react-router';
+import { withRouter } from 'react-router';
+import { Props } from '../utils/props';
 
 const routes = {
   appPages: [
     { title: 'Home', path: '/', icon: 'home' },
-    { title: 'Login', path: '/login', icon: 'login' },
+    { title: 'Logout', path: '/login', icon: 'login' },
   ]
 }
 
-type Props = RouteComponentProps<{}> & ReturnType<typeof mapStateToProps>;
-
-const Menu: React.SFC<Props> = ({ isAuthenticated, history }) => {
-
-  function renderlistItems(list: any[]) {
+const Menu = (props: Props) => {
+  console.log('Menu props', props);
+  const renderlistItems = (list: any[]) => {
     return list
-      .filter(route => !!route.path)
       .map((p) => (
         <IonMenuToggle key={p.title} auto-hide="false">
-          <IonItem button onClick={() => history.push(p.path)}>
+          <IonItem button onClick={() => props.history.push(p.path)}>
             <IonIcon slot="start" name={p.icon}></IonIcon>
             <IonLabel>
               {p.title}
@@ -49,10 +45,4 @@ const Menu: React.SFC<Props> = ({ isAuthenticated, history }) => {
   );
 }
 
-const mapStateToProps = (state: RootState) => ({
-  isAuthenticated: state.user.isAuthenticated
-});
-
-export default withRouter(connect(
-  mapStateToProps
-)(Menu));
+export default withRouter(Menu);

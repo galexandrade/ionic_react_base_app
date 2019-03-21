@@ -3,27 +3,23 @@ import { IonTabs, IonTabButton, IonIcon, IonLabel, IonRouterOutlet, IonTabBar, I
 import { Route, Redirect } from 'react-router';
 import Home from './home/Home';
 import { Props } from '../utils/props';
-import { connect } from 'react-redux';
-import { RootState } from '../store';
 import StudentList from './students/list/StudentList';
+import { connect } from '../store/store';
 
-class AppStack  extends Component<Props> {
-  render() {
-    console.log('AppStack', this.props);
-
-    return (
-      <IonPage>
-        <Route exact path="/" render={() => <Redirect to="/home"/>}/>
-    
-        <IonRouterOutlet>
-          <Route path="/:tab(home)" component={Home} />
-        </IonRouterOutlet>
-      </IonPage>
-    );
-  }
+const AppStack = (props: Props) => {
+  return (
+    <IonPage>
+      <Route exact path="/" render={() => <Redirect to="/home"/>}/>
+  
+      <IonRouterOutlet>
+        <Route path="/:tab(home)" component={Home} />
+      </IonRouterOutlet>
+    </IonPage>
+  );
 } 
 
-const mapStateToProps = (state: RootState) => ({
+const mapStateToProps = (state: any, props: any) => ({
+  ...props,
   user: state.user
 });
 
