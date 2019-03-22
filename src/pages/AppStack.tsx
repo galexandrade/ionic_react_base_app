@@ -7,6 +7,7 @@ import StudentList from './students/list/StudentList';
 import { connect } from '../store/store';
 
 const AppStack: FunctionComponent<Props> = props => {
+  console.log('Rendering AppStack');
   return (
     <IonPage>
       <Route exact path="/" render={() => <Redirect to="/home"/>}/>
@@ -16,11 +17,6 @@ const AppStack: FunctionComponent<Props> = props => {
       </IonRouterOutlet>
     </IonPage>
   );
-} 
+}
 
-const mapStateToProps = (state: any, props: any) => ({
-  ...props,
-  user: state.user
-});
-
-export default connect(mapStateToProps)(AppStack);
+export default AppStack;

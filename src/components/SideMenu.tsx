@@ -10,7 +10,7 @@ const routes = {
   ]
 }
 
-const Menu: FunctionComponent<Props> = props => {
+const SideMenu: FunctionComponent<Props> = props => {
   console.log('Menu props', props);
   const renderlistItems = (list: any[]) => {
     return list
@@ -45,4 +45,4 @@ const Menu: FunctionComponent<Props> = props => {
   );
 }
 
-export default withRouter(Menu);
+export default withRouter(SideMenu);

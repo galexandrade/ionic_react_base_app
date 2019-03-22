@@ -4,6 +4,7 @@ import { RouteComponentProps } from 'react-router';
 import { render } from 'react-dom';
 import { Props } from '../../../utils/props';
 import { connect } from '../../../store/store';
+import { State } from '../../../store/reducer';
 
 const Menu: FunctionComponent<Props> = props => {
     const navigate = (route: string) => {
@@ -27,7 +28,7 @@ const Menu: FunctionComponent<Props> = props => {
     );
 }
 
-const mapStateToProps = (state: any, props: any) => ({
+const mapStateToProps = (state: State, props: Props) => ({
     ...props,
     user: state.user
 });

@@ -6,6 +6,7 @@ import { Props } from '../../utils/props';
 import Menu from './menu/Menu';
 import StudentList from '../students/list/StudentList';
 import { connect } from '../../store/store';
+import { State } from '../../store/reducer';
 
 const Home = (props: RouteComponentProps<{}>) => {
     const navigate = (route: string) => {
@@ -22,9 +23,4 @@ const Home = (props: RouteComponentProps<{}>) => {
     );
 }
 
-const mapStateToProps = (state: any, props: any) => ({
-    ...props,
-    user: state.user
-});
-
-export default connect(mapStateToProps)(Home);
+export default Home;

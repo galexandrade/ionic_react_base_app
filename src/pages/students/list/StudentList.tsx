@@ -2,22 +2,14 @@ import React from  'react';
 import { IonButton, IonHeader, IonToolbar, IonButtons, IonBackButton, IonMenuButton, IonIcon } from '@ionic/react';
 import { RouteComponentProps } from 'react-router';
 
-type ComponentParams = {
-    id: string
-}
-
-interface Props extends RouteComponentProps, React.Props<{}> {
-    id: string
-}
+interface Props extends RouteComponentProps, React.Props<{}> {}
 
 const StudentList: React.FunctionComponent<Props> = props => {
     const goBack = () => {
         console.log(props);
         props.history.goBack();
-        props.id;
     };
 
-    console.log('Histudent List', props);
     return (
         <>
             <IonHeader>
