@@ -1,18 +1,26 @@
-export const initialState = {
+import { Action, USER_LOG_IN, USER_LOG_OUT } from './actions';
+
+export type InitialState = {
+    user: {
+        isAuthenticated: boolean
+    }
+}
+
+export const initialState: InitialState = {
     user: {
         isAuthenticated: true
     }
 };
 
-const reducer = (state: any, action: any) => {
-    const reduced = { ...state };
+export type Reducer = (state: InitialState, action: Action) => InitialState;
+const reducer: Reducer = (state: InitialState, action: Action) => {
     switch (action.type) {
-        case "user/LOG_IN":
+        case USER_LOG_IN:
             return {
                 ...state,
                 isAuthenticated: true
             };
-        case "user/LOG_OUT":
+        case USER_LOG_OUT:
             return {
                 ...state,
                 isAuthenticated: false

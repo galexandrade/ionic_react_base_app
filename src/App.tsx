@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { PrivateRoute, PublicRoute } from './utils/routing';
-import Home from './pages/home/Home';
 import Login from './pages/public/login/Login';
 import AppStack from './pages/AppStack';
 import Menu from './components/Menu';

@@ -2,11 +2,10 @@ import React from  'react';
 import { IonButton } from '@ionic/react';
 import { Store, connect } from '../../../store/store';
 import { defaultMapStateToProps } from '../../../utils/props';
+import { logIn } from '../../../store/actions';
 
 const login = (props: any) => {
-    console.log('AKI', props);
     const logIn = () => {
-        console.log('Login');
         props.login();
         props.history.push('/home')
     }
@@ -20,7 +19,7 @@ const login = (props: any) => {
 }
 
 const mapDispatchToProps = (dispatch: any) => ({
-    login: () => dispatch({ type: "user/LOG_IN" })
+    login: () => dispatch(logIn())
 });
 
 export default connect(defaultMapStateToProps, mapDispatchToProps)(login);

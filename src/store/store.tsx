@@ -1,5 +1,6 @@
-import React, { createContext, useReducer, useContext } from "react";
-import reducer, { initialState } from "./reducer";
+import React, { createContext, useReducer, useContext, ReactNode } from "react";
+import reducer, { initialState, Reducer, InitialState } from "./reducer";
+import { Action } from "./actions";
 
 const customMiddleware = (store: any) => (next: any) => (action: any) => {
   console.log("Action Triggered");
@@ -12,13 +13,13 @@ const Store = createContext({state: {}, dispatch: (action: any) => {}});
 const compose = (...funcs: any[]) => (x: any) =>
   funcs.reduceRight((composed, f) => f(composed), x);
 
-const createStore = (reducer: any, initialState: any, middlewares: any) => {
+const createStore = (reducer: Reducer, initialState: InitialState, middlewares: any) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   if (typeof middlewares !== "undefined") {
     const middlewareAPI = {
       getState: () => state,
-      dispatch: (action: any) => dispatch(action)
+      dispatch: (action: Action) => dispatch(action)
     };
     const chain = middlewares.map((middleware: any) => middleware(middlewareAPI));
     const enhancedDispatch = compose(...chain)(dispatch);
@@ -28,7 +29,7 @@ const createStore = (reducer: any, initialState: any, middlewares: any) => {
   return { state, dispatch };
 };
 
-const Provider = (props: { children: any }) => {
+const Provider = (props: { children: ReactNode }) => {
   const store = createStore(reducer, initialState, [customMiddleware]);
   return <Store.Provider value={store}>{props.children}</Store.Provider>;
 };

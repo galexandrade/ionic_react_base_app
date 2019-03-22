@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { FunctionComponent } from 'react';
 import { IonTabs, IonTabButton, IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonPage } from '@ionic/react';
 import { Route, Redirect } from 'react-router';
 import Home from './home/Home';
@@ -6,7 +6,7 @@ import { Props } from '../utils/props';
 import StudentList from './students/list/StudentList';
 import { connect } from '../store/store';
 
-const AppStack = (props: Props) => {
+const AppStack: FunctionComponent<Props> = props => {
   return (
     <IonPage>
       <Route exact path="/" render={() => <Redirect to="/home"/>}/>

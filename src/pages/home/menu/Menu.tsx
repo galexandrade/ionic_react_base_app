@@ -1,11 +1,11 @@
-import React, { Component } from  'react';
+import React, { FunctionComponent } from  'react';
 import { IonHeader, IonToolbar, IonButtons, IonMenuButton, IonContent, IonButton } from '@ionic/react';
 import { RouteComponentProps } from 'react-router';
 import { render } from 'react-dom';
 import { Props } from '../../../utils/props';
 import { connect } from '../../../store/store';
 
-const Menu = (props: Props) => {
+const Menu: FunctionComponent<Props> = props => {
     const navigate = (route: string) => {
         props.history.push(route);
     }

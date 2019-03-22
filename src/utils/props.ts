@@ -1,11 +1,9 @@
 import React from 'react';
 import { RouteComponentProps } from 'react-router';
+import { InitialState } from '../store/reducer';
 
-export type Props = ReturnType<any> & {
-    component: React.ComponentType<RouteComponentProps<any>> | React.ComponentType<any>;
-    path?: string | string[];
-}
+export interface Props extends RouteComponentProps, React.Props<{}> {}
 
-export const defaultMapStateToProps = (state: any, props: any) => ({
+export const defaultMapStateToProps = (state: InitialState, props: Props) => ({
     ...props
 });

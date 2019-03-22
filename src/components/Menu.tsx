@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { IonIcon, IonMenu, IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonListHeader, IonItem, IonLabel, IonMenuToggle } from '@ionic/react';
 import { withRouter } from 'react-router';
 import { Props } from '../utils/props';
@@ -10,7 +10,7 @@ const routes = {
   ]
 }
 
-const Menu = (props: Props) => {
+const Menu: FunctionComponent<Props> = props => {
   console.log('Menu props', props);
   const renderlistItems = (list: any[]) => {
     return list
