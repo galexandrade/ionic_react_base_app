@@ -1,5 +1,5 @@
 import React, { createContext, useReducer, useContext, ReactNode } from "react";
-import reducer, { initialState, Reducer, InitialState } from "./reducer";
+import reducer, { initialState, Reducer, State } from "./reducer";
 import { Action } from "./actions";
 
 const customMiddleware = (store: any) => (next: any) => (action: any) => {
@@ -13,7 +13,7 @@ const Store = createContext({state: {}, dispatch: (action: any) => {}});
 const compose = (...funcs: any[]) => (x: any) =>
   funcs.reduceRight((composed, f) => f(composed), x);
 
-const createStore = (reducer: Reducer, initialState: InitialState, middlewares: any) => {
+const createStore = (reducer: Reducer, initialState: State, middlewares: any) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   if (typeof middlewares !== "undefined") {

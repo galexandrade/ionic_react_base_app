@@ -1,19 +1,19 @@
 import { Action, USER_LOG_IN, USER_LOG_OUT } from './actions';
 
-export type InitialState = {
+export type State = {
     user: {
         isAuthenticated: boolean
     }
 }
 
-export const initialState: InitialState = {
+export const initialState: State = {
     user: {
         isAuthenticated: true
     }
 };
 
-export type Reducer = (state: InitialState, action: Action) => InitialState;
-const reducer: Reducer = (state: InitialState, action: Action) => {
+export type Reducer = (state: State, action: Action) => State;
+const reducer: Reducer = (state: State, action: Action) => {
     switch (action.type) {
         case USER_LOG_IN:
             return {
